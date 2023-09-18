@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Contact = require('../models/Contact'); // Adjust the path as needed
+const Contact = require('./models/Contact'); // Adjust the path as needed
 
 // GET all contacts
 router.get('/', async (req, res) => {
