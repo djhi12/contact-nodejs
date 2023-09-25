@@ -4,7 +4,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon /app.js"
+    "start": "nodemon app.js" 
   },
   "author": "Daniel John Idorot",
   "license": "ISC",
@@ -22,5 +22,22 @@
     "mocha": "^10.2.0"
   },
   "keywords": [],
-  "description": ""
+  "description": "",
+  "swaggerConfig": {
+    "swaggerDefinition": {
+      "openapi": "3.0.0",
+      "info": {
+        "title": "Contact API",
+        "version": "1.0.0",
+        "description": "API for managing contacts"
+      },
+      "servers": [
+        {
+          "url": "http://localhost:3000",
+          "description": "Local development server"
+        }
+      ]
+    },
+    "apis": ["./routes/*.js"]
+  }
 }
