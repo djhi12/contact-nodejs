@@ -1,18 +1,21 @@
-const swaggerJsdoc = require('swagger-jsdoc');
-const swaggerUi = require('swagger-ui-express');
+const swaggerAutogen = require('swagger-autogen')();
 
-// Swagger options
-const options = {
-    swaggerDefinition: {
-        info: {
-            title: 'Contact API',
-            version: '1.0.0',
-            description: 'API for storing and retrieving contacts',
-        },
-    },
-    apis: ['./routes/*.js'], // Replace with the path to your route files
+const doc = {
+  info: {
+    title: 'My API',
+    description: 'Temple API',
+  },
+  host: 'localhost:8080',
+  schemes: ['http'],
 };
 
-const specs = swaggerJsdoc(options);
+const outputFile = './swagger.json';
+const endpointsFiles = ['./routes/index.js'];
 
-module.exports = { specs, swaggerUi };
+// generate swagger.json
+swaggerAutogen(outputFile, endpointsFiles, doc);
+
+// Run server after it gets generated
+// swaggerAutogen(outputFile, endpointsFiles, doc).then(async () => {
+//   await import('./index.js');
+// });

@@ -42,8 +42,8 @@ app.use(bodyParser.json());
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 
-app.use('/api', indexRouter);
-app.use('/api/users', usersRouter);
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
 
 // Serve Swagger UI
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
