@@ -1,76 +1,33 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const { specs, swaggerUi } = require('./swagger'); // Replace with the correct path to your swagger.js file
-
-
+const mongoose = require('mongoose');
+const swaggerUi = require('swagger-ui-express');
+const swaggerJSDoc = require('swagger-jsdoc');
 const app = express();
-const PORT = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 
-// Connect to MongoDB
-mongoose.connect('mongodb+srv://djidorot:<password>@cluster0.mkhckpk.mongodb.net/?retryWrites=true&w=majority', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-});
-
-// Create a Contact model
-const Contact = mongoose.model('Contact', {
-    firstName: String,
-    lastName: String,
-    email: String,
-    phone: String,
-});
-
-// Middleware
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// Create a POST route to create a new contact
-app.post('/contacts', async (req, res) => {
-    try {
-        const newContact = new Contact(req.body);
-        await newContact.save();
-        res.status(201).json({ id: newContact._id });
-    } catch (error) {
-        res.status(500).json({ error: 'Failed to create contact' });
-    }
+// MongoDB connection
+require('./data/database');
+
+// Swagger API documentation setup
+// ... (your existing Swagger setup code)
+
+// Define a root route
+app.get('/', (req, res) => {
+    res.send('Hello, World!'); // Replace with your desired response
 });
 
-// Create a PUT route to update a contact
-app.put('/contacts/:id', async (req, res) => {
-    try {
-        const updatedContact = await Contact.findByIdAndUpdate(
-            req.params.id,
-            req.body,
-            { new: true }
-        );
-        if (!updatedContact) {
-            return res.status(404).json({ error: 'Contact not found' });
-        }
-        res.status(200).json({ message: 'Contact updated successfully' });
-    } catch (error) {
-        res.status(500).json({ error: 'Failed to update contact' });
-    }
-});
+// Include routes
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
 
-// Create a DELETE route to delete a contact
-app.delete('/contacts/:id', async (req, res) => {
-    try {
-        const deletedContact = await Contact.findByIdAndDelete(req.params.id);
-        if (!deletedContact) {
-            return res.status(404).json({ error: 'Contact not found' });
-        }
-        res.status(204).end();
-    } catch (error) {
-        res.status(500).json({ error: 'Failed to delete contact' });
-    }
-});
-
-// Serve Swagger API documentation
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
-
+app.use('/api', indexRouter);
+app.use('/api/users', usersRouter);
 
 // Start the server
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
 });
