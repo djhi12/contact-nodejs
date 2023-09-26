@@ -21,7 +21,7 @@ const swaggerOptions = {
             description: 'API for managing contacts',
         },
     },
-    apis: ['./routes/contacts.js'], // Path to your API route files
+    apis: ['../routes/contacts.js'], // Path to your API route files
 };
 
 const swaggerSpec = swaggerJSDoc(swaggerOptions);
@@ -57,8 +57,8 @@ mongoose
     });
 
 // Use the routers
-app.use('/contacts', contactsRouter);
-app.use('/users', usersRouter);
+app.use('./contacts', contactsRouter);
+app.use('./users', usersRouter);
 
 app.get('/', (req, res) => {
     res.send('Hello World');
