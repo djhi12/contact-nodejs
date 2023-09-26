@@ -21,7 +21,7 @@ const swaggerOptions = {
             description: 'API for managing contacts',
         },
     },
-    apis: ['/routes/contacts.js'], // Path to your API route files
+    apis: ['./routes/*.js'], // Use wildcards to include all route files
 };
 
 const swaggerSpec = swaggerJSDoc(swaggerOptions);
@@ -41,10 +41,6 @@ mongoose
 
         // Define your other routes and middleware here
 
-        app.get('/', (req, res) => {
-            res.send('Hello World');
-        });
-
         // ... Define your other routes and middleware here
 
         // Start your Express server after the MongoDB connection is established
@@ -63,4 +59,3 @@ app.use('/users', usersRouter);
 app.get('/', (req, res) => {
     res.send('Hello World');
 });
-

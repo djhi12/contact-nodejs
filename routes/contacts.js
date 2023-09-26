@@ -3,6 +3,7 @@ const router = express.Router();
 const Contact = require('../models/contact'); // Import the Contact model
 const path = require('path'); // Import the path module
 
+
 // GET all contacts
 router.get('/', async (req, res) => {
     try {
