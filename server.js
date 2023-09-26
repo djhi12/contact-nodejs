@@ -5,8 +5,8 @@ const swaggerUI = require('swagger-ui-express');
 const port = process.env.PORT || 3000;
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const contactsRouter = require('../routes/contacts');
-const usersRouter = require('../routes/users');
+const contactsRouter = require('./routes/contacts');
+const usersRouter = require('./routes/users');
 
 // Load environment variables from .env file
 dotenv.config(); // Load .env variables
