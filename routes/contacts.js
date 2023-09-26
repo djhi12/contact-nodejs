@@ -27,5 +27,18 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+const swaggerOptions = {
+    definition: {
+        openapi: '3.0.0',
+        info: {
+            title: 'Contacts API',
+            version: '1.0.0',
+            description: 'API for managing contacts',
+        },
+    },
+    apis: ['./routes/contacts.js', './routes/users.js'], // Add the path to users.js
+};
+
+
 
 module.exports = router;

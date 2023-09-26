@@ -5,6 +5,8 @@ const swaggerUI = require('swagger-ui-express');
 const port = process.env.PORT || 3000;
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const contactsRouter = require('./routes/contacts');
+const usersRouter = require('./routes/users');
 
 // Load environment variables from .env file
 dotenv.config(); // Load .env variables
@@ -54,6 +56,9 @@ mongoose
         console.error('Error connecting to MongoDB:', err);
     });
 
+// Use the routers
+app.use('/contacts', contactsRouter);
+app.use('/users', usersRouter);
 
 app.get('/', (req, res) => {
     res.send('Hello World');
@@ -64,6 +69,6 @@ app.get('/', (req, res) => {
 
 // ... Define your other routes and middleware here
 
-// app.listen(port, () => {
-//     console.log(`Server is running on port ${port}`);
-// });
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+});
