@@ -57,8 +57,8 @@ mongoose
     });
 
 // Use the routers
-app.use('./contacts', contactsRouter);
-app.use('./users', usersRouter);
+app.use('../contacts', contactsRouter);
+app.use('../users', usersRouter);
 
 app.get('/', (req, res) => {
     res.send('Hello World');
