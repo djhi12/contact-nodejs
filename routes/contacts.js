@@ -39,8 +39,8 @@ const swaggerOptions = {
     },
     // Use absolute file paths using __dirname
     apis: [
-        path.join(__dirname, '../routes/contacts.js'),
-        path.join(__dirname, '../routes/users.js')
+        path.join(__dirname, './routes/contacts.js'),
+        path.join(__dirname, './routes/users.js')
     ],
 };
 
