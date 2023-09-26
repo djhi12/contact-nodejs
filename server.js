@@ -64,11 +64,3 @@ app.get('/', (req, res) => {
     res.send('Hello World');
 });
 
-// ... Define your other routes and middleware here
-
-
-// ... Define your other routes and middleware here
-
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-});
