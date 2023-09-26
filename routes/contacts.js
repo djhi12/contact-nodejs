@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Contact = require('../models/contact'); // Import the Contact model
-
+const path = require('path'); // Import the path module
 
 // GET all contacts
 router.get('/', async (req, res) => {
@@ -37,9 +37,11 @@ const swaggerOptions = {
             description: 'API for managing contacts',
         },
     },
-    apis: ['../routes/contacts.js', '../routes/users.js'], // Add the path to users.js
+    // Use absolute file paths using __dirname
+    apis: [
+        path.join(__dirname, '../routes/contacts.js'),
+        path.join(__dirname, '../routes/users.js')
+    ],
 };
-
-
 
 module.exports = router;
