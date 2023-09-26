@@ -37,7 +37,7 @@ const swaggerOptions = {
             description: 'API for managing contacts',
         },
     },
-    apis: ['./routes/contacts.js', './routes/users.js'], // Add the path to users.js
+    apis: ['../routes/contacts.js', '../routes/users.js'], // Add the path to users.js
 };
 
 
