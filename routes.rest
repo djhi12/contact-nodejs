@@ -1,5 +1,28 @@
-### Get all contacts
-GET http://localhost:3000/contacts
+# ### Get all contacts
+# GET http://localhost:3000/contacts
 
-### Get a contact by ID
-GET http://localhost:3000/contacts/your-contact-id
+# ### Get a contact by ID
+# GET http://localhost:3000/contacts/your-contact-id
+
+# POST a new contact
+POST http://localhost:your-port/api/contacts
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "johndoe@example.com",
+  "phone": "123-456-7890"
+}
+
+# PUT to update a contact (replace {contact-id} with the actual ID)
+PUT http://localhost:your-port/api/contacts/{contact-id}
+Content-Type: application/json
+
+{
+  "name": "Updated Name",
+  "email": "updated@example.com",
+  "phone": "987-654-3210"
+}
+
+# DELETE a contact (replace {contact-id} with the actual ID)
+DELETE http://localhost:your-port/api/contacts/{contact-id}
