@@ -9,7 +9,7 @@ const contactsRouter = require('./routes/contacts');
 const usersRouter = require('./routes/users');
 
 // Load environment variables from .env file
-dotenv.config(); // Load .env variables
+dotenv.config(); // Load .env variables.
 
 // Define Swagger options
 const swaggerOptions = {
