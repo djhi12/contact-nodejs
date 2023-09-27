@@ -9,6 +9,7 @@ const Contact = require('../models/contact'); // Import the Contact model
  * tags:
  *   name: Contacts
  *   description: API endpoints for managing contacts
+ * 
  */
 
 /**
