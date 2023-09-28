@@ -52,7 +52,7 @@ mongoose
         console.error('Error connecting to MongoDB:', err);
     });
 
-// Use the routers
+// Use the routers.
 app.use('/contacts', contactsRouter);
 app.use('/users', usersRouter);
 
