@@ -38,7 +38,7 @@ mongoose
     })
     .then(() => {
         console.log('Connected to MongoDB');
-
+        // 
         // Define your other routes and middleware here
 
         // ... Define your other routes and middleware here
